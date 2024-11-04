@@ -35,6 +35,16 @@ def process(text, lemmatizer=nltk.stem.wordnet.WordNetLemmatizer()):
     [YOUR CODE HERE]
     
 #%%
+def get_wordnet_pos(treebank_tag): #no need to change this function - used to tag tokens for context specification and then for lemmatization
+    if treebank_tag.startswith('J'):
+        return nltk.corpus.wordnet.ADJ
+    elif treebank_tag.startswith('V'):
+        return nltk.corpus.wordnet.VERB
+    elif treebank_tag.startswith('R'):
+        return nltk.corpus.wordnet.ADV
+    else:
+        return nltk.corpus.wordnet.NOUN
+#%%
 def process_all(df, lemmatizer=nltk.stem.wordnet.WordNetLemmatizer()):
     """ process all text in the dataframe using process function.
     Inputs
